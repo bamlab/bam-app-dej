@@ -86,7 +86,7 @@ var WelcomeView = React.createClass({
                     <Text style={{fontSize: 16, color: '#888888', width: 30}}>
                       {this.state.votes[option.id]}
                     </Text>
-                    <TouchableHighlight onPress={this._votePlusFor.bind(this, option)}>
+                    <TouchableHighlight onPress={this._votePlusFor.bind(this, option)} underlayColor='white'>
                       <View style={styles.roundButton}>
                         <Text style={styles.roundButtonText}>
                           +
