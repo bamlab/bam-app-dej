@@ -27,6 +27,11 @@ ParseService.prototype.getPlusVotesFor = function(option) {
 	var query = new Parse.Query(Vote);
 	query.equalTo("option", option.id);
 
+	var todaysDate = new Date();
+	todaysDate.setHours(0,0,0,0);
+
+	query.greaterThanOrEqualTo("createdAt", todaysDate);
+
 	return query.find();
 }
 

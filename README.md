@@ -51,3 +51,10 @@ cd BamAppDej
 npm test
 npm test -- --watch
 ```
+
+
+## Packaging
+
+```
+react-native bundle
+```
