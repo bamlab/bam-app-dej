@@ -30,7 +30,6 @@ var WelcomeView = React.createClass({
 
   _votePlusFor: function(option) {
     this.props.parseService.votePlusFor(option).then(() =>{
-      alert("Vote enregistré!");
       var votes = this.state.votes;
       votes[option.id]++;
 
