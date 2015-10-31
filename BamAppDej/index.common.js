@@ -6,6 +6,8 @@
 
 var React = require('react-native');
 var Button = require('react-native-button');
+var Parse = require('parse/react-native');
+Parse.initialize("FDag4VvDooHzkS6joKK845O8gDWNpwnicK57CxLv", "P4ByaCIjUmszYBK5CNVbTypOK2m1X2zQMQKjpPVB");
 var {
   AppRegistry,
   StyleSheet,
@@ -13,6 +15,14 @@ var {
   View,
   Navigator
 } = React;
+
+//Test
+var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  alert("yay! it worked");
+});
+
 
 var AddOptionView = React.createClass({
 
