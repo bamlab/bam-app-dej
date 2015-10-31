@@ -11,12 +11,37 @@ var {
   StyleSheet,
   Text,
   View,
+  Navigator
 } = React;
 
-var BamAppDej = React.createClass({
+var AddOptionView = React.createClass({
+
+  _goBack: function() {
+    this.props.navigator.pop();
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Text>
+          Ajouter une option
+        </Text>
+        <Button style={{color: 'green'}} onPress={this._goBack}>
+          Go back
+        </Button>
+      </View>
+    );
+  }
+});
+
+var WelcomeView = React.createClass({
 
   _goCreateOption: function() {
-    console.log("HELLO WORLD")
+    console.log("HELLO WORLD");
+    this.props.navigator.push({
+      name: 'AddOptionView',
+      component: AddOptionView
+    });
   },
 
   render: function() {
@@ -45,7 +70,7 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,
@@ -59,4 +84,25 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = BamAppDej;
+class App extends React.Component {
+    render() {
+        return (
+            <Navigator
+                initialRoute={{name: 'WelcomeView', component: WelcomeView}}
+                configureScene={() => {
+                    return Navigator.SceneConfigs.FloatFromRight;
+                }}
+                renderScene={(route, navigator) => {
+                    // count the number of func calls
+                    console.log(route, navigator);
+
+                    if (route.component) {
+                        return React.createElement(route.component, { navigator });
+                    }
+                }}
+             />
+        );
+    }
+}
+
+module.exports = App;

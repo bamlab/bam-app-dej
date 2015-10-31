@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var BamAppDej = require('./index.common');
+var App = require('./index.common');
 var AppRegistry = require('react-native').AppRegistry;
 
-AppRegistry.registerComponent('BamAppDej', () => BamAppDej);
+AppRegistry.registerComponent('BamAppDej', () => App);
