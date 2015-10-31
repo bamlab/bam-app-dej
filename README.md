@@ -1,8 +1,29 @@
 # bam-app-dej
 
-## Installation
+## Requirements
+* Xcode 6.3 or higher
+* Android SDK (and an Android emulator if you want to work on your app without having to use a physical device)
 
-TODO
+## Installation
+* OS X - This guide assumes OS X which is needed for iOS development.
+* Homebrew is the recommended way to install Watchman and Flow.
+* Install Node.js 4.0 or newer.
+```
+nvm install v4
+```
+* Install watchman (recommended otherwise you might hit a node file watching bug.)
+```
+brew install watchman
+```
+* If you want to use flow install flow
+```
+brew install flow
+```
+We recommend periodically running brew update && brew upgrade to keep your programs up-to-date.
+* Install react-native
+```
+npm install -g react-native-cli
+```
 
 ## Development
 
