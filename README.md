@@ -1,14 +1,20 @@
 # bam-app-dej
 
+## Installation
+
+TODO
+
 ## Development
 
 ### iOS
-   * Open `BamAppDej/ios/BamAppDej.xcodeproj` in Xcode
-   * Hit Run button
+```
+open BamAppDej/ios/BamAppDej.xcodeproj/
+```
+Then hit *Run* button in XCode.
 
 ### Android
    * Have an Android emulator running, or a device connected
 ```
-cd /Users/florian/Projects/B/bam-app-dej/BamAppDej
+cd BamAppDej
 react-native run-android
 ```
