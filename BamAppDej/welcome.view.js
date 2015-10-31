@@ -76,9 +76,14 @@ var WelcomeView = React.createClass({
                   <Text style={styles.listItem}>
                     {index}. {option.name}
                   </Text>
-                  <Button onPress={this._votePlusFor.bind(this, option)}>
-                    + ({this.state.votes[option.id]})
-                  </Button>
+                  <View style={styles.listItemActions}>
+                    <Text style={{fontSize: 16, color: '#888888'}}>
+                      {this.state.votes[option.id]}
+                    </Text>
+                    <Button style={styles.roundButton} onPress={this._votePlusFor.bind(this, option)}>
+                        +
+                    </Button>
+                  </View>
                 </View>
               );
             })
@@ -133,6 +138,10 @@ var styles = StyleSheet.create({
     margin: 20,
   },
   listItemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 80,
     padding: 10,
     margin: 5,
     marginLeft: 10,
@@ -142,11 +151,40 @@ var styles = StyleSheet.create({
     shadowColor: '#444444',
     shadowOpacity: 0.1,
     shadowOffset: {width: 2, height: 2},
+    alignItems: 'center',
   },
   listItem: {
+    flex: 0.7,
     padding: 10,
     fontSize: 16,
     color: '#888888',
+  },
+  listItemActions: {
+    flex: 0.3,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  roundButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 45,
+    borderWidth: 1,
+    backgroundColor: '#dddddd',
+    borderColor: '#dddddd',
+    shadowColor: '#444444',
+    shadowOpacity: 0.1,
+    shadowOffset: {width: 2, height: 2},
+    textAlign: 'center',
+    padding: 10,
+    marginLeft: 20,
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white',
+  },
+  roundButtonText: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white',
   },
 });
 
