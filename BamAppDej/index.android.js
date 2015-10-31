@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * App Dej
+ * https://github.com/bamlab/bam-app-dej
  */
 'use strict';
 
