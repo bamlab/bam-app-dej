@@ -27,7 +27,9 @@ class App extends React.Component {
         //Load all the options available from Parse...
         parseService.loadAllLunchOptions().then((allOptions) => {
             allOptions.forEach(function(option) {
-                lunchOptions.addOption(option);
+                lunchOptions.addOption({
+                    name: option.get('name')
+                });
             });
 
             //...and update the app state.
@@ -47,7 +49,8 @@ class App extends React.Component {
 
                     return React.createElement(route.component, {
                         navigator,
-                        lunchOptions: this.state.lunchOptions
+                        lunchOptions: this.state.lunchOptions,
+                        parseService: this.state.parseService
                     });
                 }}
              />

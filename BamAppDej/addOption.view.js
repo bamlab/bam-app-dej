@@ -18,12 +18,25 @@ var AddOptionView = React.createClass({
     return {lunchOptionName: '...'};
   },
 
+  propTypes: {
+    parseService: React.PropTypes.object
+  },
+
   _goBack: function() {
     this.props.navigator.pop();
   },
 
-  addOption: function() {
-    alert(this.state.lunchOptionName);
+  _addOption: function() {
+    var newOption = {
+      name: this.state.lunchOptionName
+    };
+
+    this.props.parseService.addLunchOption(newOption).then(() => {
+      this.props.lunchOptions.addOption(newOption);
+      this._goBack();
+    }, () => {
+      alert("Error while saving your lunch :(");
+    });
   },
 
   render: function() {
@@ -40,7 +53,7 @@ var AddOptionView = React.createClass({
           onChangeText={(text) => this.setState({lunchOptionName: text})}
           value={this.state.lunchOptionName}
         />
-        <Button style={{color: 'green'}} onPress={this.addOption}>
+        <Button style={{color: 'green'}} onPress={this._addOption}>
           Ajouter
         </Button>
       </View>

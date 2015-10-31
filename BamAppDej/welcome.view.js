@@ -33,7 +33,7 @@ var WelcomeView = React.createClass({
         </Text>
         {
           allOptions.map(function(option, index) {
-            return <Text>Option {index}: {option.get('name')}</Text>
+            return <Text>Option {index}: {option.name}</Text>
           })
         }
         <Button style={styles.button} onPress={this._goCreateOption}>

@@ -10,4 +10,9 @@ ParseService.prototype.loadAllLunchOptions = function() {
 	return query.find();
 }
 
+ParseService.prototype.addLunchOption = function(option) {
+	var newOption = new LunchOption();
+	return newOption.save(option);
+}
+
 module.exports = ParseService;
