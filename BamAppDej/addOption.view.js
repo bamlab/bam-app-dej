@@ -6,25 +6,42 @@ var {
   AppRegistry,
   StyleSheet,
   Text,
+  TextInput,
   View,
-  Navigator
+  Navigator,
 } = React;
 var WelcomeView = require('./welcome.view.js');
 
 var AddOptionView = React.createClass({
 
+  getInitialState: function() {
+    return {lunchOptionName: '...'};
+  },
+
   _goBack: function() {
     this.props.navigator.pop();
+  },
+
+  addOption: function() {
+    alert(this.state.lunchOptionName);
   },
 
   render: function() {
     return (
       <View style={styles.container}>
+        <Button style={{color: 'green'}} onPress={this._goBack}>
+          Go back
+        </Button>
         <Text>
           Ajouter une option
         </Text>
-        <Button style={{color: 'green'}} onPress={this._goBack}>
-          Go back
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={(text) => this.setState({lunchOptionName: text})}
+          value={this.state.lunchOptionName}
+        />
+        <Button style={{color: 'green'}} onPress={this.addOption}>
+          Ajouter
         </Button>
       </View>
     );
