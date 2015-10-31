@@ -29,7 +29,8 @@ npm install -g react-native-cli
 
 ### iOS
 ```
-open BamAppDej/ios/BamAppDej.xcodeproj/
+cd BamAppDej
+open ios/BamAppDej.xcodeproj/
 react-native start
 ```
 Then hit *Run* button in XCode.
