@@ -5,21 +5,36 @@
 'use strict';
 
 var React = require('react-native');
+var ParseService = require('./parseService');
+var LunchOptions = require('./lunchOptions');
 var WelcomeView = require('./welcome.view.js');
-var Parse = require('parse/react-native');
 var {
-  Navigator
+    Navigator
 } = React;
 
-//Test
-Parse.initialize("FDag4VvDooHzkS6joKK845O8gDWNpwnicK57CxLv", "P4ByaCIjUmszYBK5CNVbTypOK2m1X2zQMQKjpPVB");
-var TestObject = Parse.Object.extend("TestObject");
-var testObject = new TestObject();
-testObject.save({foo: "bar"}).then(function(object) {
-  alert("yay! it worked");
-});
 
 class App extends React.Component {
+    constructor() {
+        super();
+        var parseService = new ParseService();
+        var lunchOptions = new LunchOptions();
+
+        this.state = {
+            lunchOptions: lunchOptions,
+            parseService: parseService
+        };
+
+        //Load all the options available from Parse...
+        parseService.loadAllLunchOptions().then((allOptions) => {
+            allOptions.forEach(function(option) {
+                lunchOptions.addOption(option);
+            });
+
+            //...and update the app state.
+            this.setState({lunchOptions: lunchOptions});
+        });
+    }
+
     render() {
         return (
             <Navigator
@@ -28,12 +43,12 @@ class App extends React.Component {
                     return Navigator.SceneConfigs.FloatFromRight;
                 }}
                 renderScene={(route, navigator) => {
-                    // count the number of func calls
-                    console.log(route, navigator);
+                    if (!route.component) return;
 
-                    if (route.component) {
-                        return React.createElement(route.component, { navigator });
-                    }
+                    return React.createElement(route.component, {
+                        navigator,
+                        lunchOptions: this.state.lunchOptions
+                    });
                 }}
              />
         );

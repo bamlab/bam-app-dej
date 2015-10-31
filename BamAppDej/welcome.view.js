@@ -14,7 +14,6 @@ var AddOptionView = require('./addOption.view.js');
 var WelcomeView = React.createClass({
 
   _goCreateOption: function() {
-    console.log("HELLO WORLD");
     this.props.navigator.push({
       name: 'AddOptionView',
       component: AddOptionView
@@ -22,20 +21,18 @@ var WelcomeView = React.createClass({
   },
 
   render: function() {
+    console.log();
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          BAM Dej App
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Il y a {this.props.lunchOptions.getAllOptions().length} différentes options pour manger ce midi.
         </Text>
         <Button style={{color: 'green'}} onPress={this._goCreateOption}>
-          Press Me!
+          Ajouter une nouvelle option
         </Button>
       </View>
     );
