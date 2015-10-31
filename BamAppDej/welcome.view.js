@@ -21,7 +21,7 @@ var WelcomeView = React.createClass({
   },
 
   render: function() {
-    console.log();
+    var allOptions = this.props.lunchOptions.getAllOptions();
 
     return (
       <View style={styles.container}>
@@ -31,6 +31,11 @@ var WelcomeView = React.createClass({
         <Text style={styles.instructions}>
           Il y a {this.props.lunchOptions.getAllOptions().length} différentes options pour manger ce midi.
         </Text>
+        {
+          allOptions.map(function(option, index) {
+            return <Text>Option {index}: {option.get('name')}</Text>
+          })
+        }
         <Button style={styles.button} onPress={this._goCreateOption}>
           Ajouter une option
         </Button>
