@@ -9,5 +9,8 @@
     "parse": "^1.6.8",
     "react-native": "^0.13.2",
     "react-native-button": "^1.2.1"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.6.1"
   }
 }
