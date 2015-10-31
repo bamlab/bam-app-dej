@@ -9,6 +9,7 @@ TODO
 ### iOS
 ```
 open BamAppDej/ios/BamAppDej.xcodeproj/
+react-native start
 ```
 Then hit *Run* button in XCode.
 
