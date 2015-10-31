@@ -43,3 +43,11 @@ npm install
 
 react-native run-android
 ```
+
+### Run tests
+
+```shell
+cd BamAppDej
+npm test
+npm test -- --watch
+```
