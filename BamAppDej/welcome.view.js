@@ -25,9 +25,11 @@ var WelcomeView = React.createClass({
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
-          Lunch App
-        </Text>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>
+            Lunch App
+          </Text>
+        </View>
         <Text style={styles.instructions}>
           Il y a {this.props.lunchOptions.getAllOptions().length} différentes options pour manger ce midi.
         </Text>
@@ -50,13 +52,17 @@ var styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'white',
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    backgroundColor: '#2a7fff',
-    color: 'white',
+  header: {
+    flexDirection: 'row',
     padding: 15,
     paddingTop: 25,
+    backgroundColor: '#2a7fff',
+  },
+  headerTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'white',
+    flex: 0.5,
   },
   instructions: {
     textAlign: 'center',
