@@ -7,7 +7,8 @@ var {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  ScrollView,
 } = React;
 var AddOptionView = require('./addOption.view.js');
 
@@ -30,22 +31,22 @@ var WelcomeView = React.createClass({
             Lunch App
           </Text>
         </View>
-        <View style={styles.list}>
-          <Text style={styles.listTitle}>
-            Il y a {this.props.lunchOptions.getAllOptions().length} différentes options :
-          </Text>
+        <Text style={styles.listTitle}>
+          Il y a {this.props.lunchOptions.getAllOptions().length} différentes options :
+        </Text>
+        <ScrollView style={styles.list}>
           {
             allOptions.map(function(option, index) {
               return (
                 <View style={styles.listItemContainer}>
                   <Text style={styles.listItem}>
-                    {option.name}
+                    {index}. {option.name}
                   </Text>
                 </View>
               );
             })
           }
-        </View>
+        </ScrollView>
         <Button style={styles.button} onPress={this._goCreateOption}>
           Ajouter une option
         </Button>
@@ -87,17 +88,23 @@ var styles = StyleSheet.create({
   },
   list: {
     flex: 2,
+    backgroundColor: '#eeeeee',
+    paddingTop: 5,
   },
   listTitle: {
     fontSize: 20,
     margin: 20,
   },
   listItemContainer: {
-    padding: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    borderBottomColor: '#cccccc',
-    borderBottomWidth: 1,
+    padding: 10,
+    margin: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: 'white',
+    borderRadius: 3,
+    shadowColor: '#444444',
+    shadowOpacity: 0.1,
+    shadowOffset: {width: 2, height: 2},
   },
   listItem: {
     padding: 10,
