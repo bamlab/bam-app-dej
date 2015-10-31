@@ -30,14 +30,22 @@ var WelcomeView = React.createClass({
             Lunch App
           </Text>
         </View>
-        <Text style={styles.instructions}>
-          Il y a {this.props.lunchOptions.getAllOptions().length} différentes options pour manger ce midi.
-        </Text>
-        {
-          allOptions.map(function(option, index) {
-            return <Text>Option {index}: {option.get('name')}</Text>
-          })
-        }
+        <View style={styles.list}>
+          <Text style={styles.listTitle}>
+            Il y a {this.props.lunchOptions.getAllOptions().length} différentes options :
+          </Text>
+          {
+            allOptions.map(function(option, index) {
+              return (
+                <View style={styles.listItemContainer}>
+                  <Text style={styles.listItem}>
+                    {option.get('name')}
+                  </Text>
+                </View>
+              );
+            })
+          }
+        </View>
         <Button style={styles.button} onPress={this._goCreateOption}>
           Ajouter une option
         </Button>
@@ -75,6 +83,26 @@ var styles = StyleSheet.create({
     color: 'white',
     padding: 10,
     margin: 20,
+    fontSize: 20,
+  },
+  list: {
+    flex: 2,
+  },
+  listTitle: {
+    fontSize: 20,
+    margin: 20,
+  },
+  listItemContainer: {
+    padding: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderBottomColor: '#cccccc',
+    borderBottomWidth: 1,
+  },
+  listItem: {
+    padding: 10,
+    fontSize: 16,
+    color: '#888888',
   },
 });
 
