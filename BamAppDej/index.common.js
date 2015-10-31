@@ -28,7 +28,8 @@ class App extends React.Component {
         parseService.loadAllLunchOptions().then((allOptions) => {
             allOptions.forEach(function(option) {
                 lunchOptions.addOption({
-                    name: option.get('name')
+                    name: option.get('name'),
+                    id: option.id
                 });
             });
 

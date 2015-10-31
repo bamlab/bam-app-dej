@@ -14,6 +14,12 @@ var AddOptionView = require('./addOption.view.js');
 
 var WelcomeView = React.createClass({
 
+  getInitialState: function() {
+    return {
+      votes: {}
+    }
+  },
+
   _goCreateOption: function() {
     this.props.navigator.push({
       name: 'AddOptionView',
@@ -21,8 +27,36 @@ var WelcomeView = React.createClass({
     });
   },
 
+  _votePlusFor: function(option) {
+    this.props.parseService.votePlusFor(option).then(() =>{
+      alert("Vote enregistré!");
+    }, () => {
+      alert("Erreur lors du vote :(");
+    });
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    if (nextProps === this.props) return;
+
+    var allOptions = this.props.lunchOptions.getAllOptions();
+
+    allOptions.forEach((option) => {
+      this.props.parseService.getPlusVotesFor(option).then((optionVotes) => {
+        var votes = this.state.votes;
+        votes[option.id] = optionVotes.length;
+
+        this.setState({
+          votes: votes
+        });
+      }, () => {
+        console.log("Unable to load votes for option with id=", option.id);
+      });
+    });
+  },
+
   render: function() {
     var allOptions = this.props.lunchOptions.getAllOptions();
+
 
     return (
       <View style={styles.container}>
@@ -36,12 +70,15 @@ var WelcomeView = React.createClass({
         </Text>
         <ScrollView style={styles.list}>
           {
-            allOptions.map(function(option, index) {
+            allOptions.map((option, index) => {
               return (
                 <View style={styles.listItemContainer}>
                   <Text style={styles.listItem}>
                     {index}. {option.name}
                   </Text>
+                  <Button onPress={this._votePlusFor.bind(this, option)}>
+                    + ({this.state.votes[option.id]})
+                  </Button>
                 </View>
               );
             })
