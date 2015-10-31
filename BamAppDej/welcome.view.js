@@ -9,6 +9,7 @@ var {
   View,
   Navigator,
   ScrollView,
+  TouchableHighlight,
 } = React;
 var AddOptionView = require('./addOption.view.js');
 
@@ -80,9 +81,13 @@ var WelcomeView = React.createClass({
                     <Text style={{fontSize: 16, color: '#888888'}}>
                       {this.state.votes[option.id]}
                     </Text>
-                    <Button style={styles.roundButton} onPress={this._votePlusFor.bind(this, option)}>
-                        +
-                    </Button>
+                    <TouchableHighlight onPress={this._votePlusFor.bind(this, option)}>
+                      <View style={styles.roundButton}>
+                        <Text style={styles.roundButtonText}>
+                          +
+                        </Text>
+                      </View>
+                    </TouchableHighlight>
                   </View>
                 </View>
               );
@@ -169,8 +174,8 @@ var styles = StyleSheet.create({
     height: 50,
     borderRadius: 45,
     borderWidth: 1,
-    backgroundColor: '#dddddd',
-    borderColor: '#dddddd',
+    backgroundColor: '#2a7fff',
+    borderColor: '#2a7fff',
     shadowColor: '#444444',
     shadowOpacity: 0.1,
     shadowOffset: {width: 2, height: 2},
