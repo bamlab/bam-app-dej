@@ -25,14 +25,14 @@ var WelcomeView = React.createClass({
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          BAM Dej App
+        <Text style={styles.title}>
+          Lunch App
         </Text>
         <Text style={styles.instructions}>
           Il y a {this.props.lunchOptions.getAllOptions().length} différentes options pour manger ce midi.
         </Text>
-        <Button style={{color: 'green'}} onPress={this._goCreateOption}>
-          Ajouter une nouvelle option
+        <Button style={styles.button} onPress={this._goCreateOption}>
+          Ajouter une option
         </Button>
       </View>
     );
@@ -42,19 +42,28 @@ var WelcomeView = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: 'white',
   },
-  welcome: {
+  title: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    backgroundColor: '#2a7fff',
+    color: 'white',
+    padding: 15,
+    paddingTop: 25,
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  button: {
+    backgroundColor: '#ffcc00',
+    textAlign: 'center',
+    color: 'white',
+    padding: 10,
+    margin: 20,
   },
 });
 
