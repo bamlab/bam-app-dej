@@ -81,9 +81,7 @@ var WelcomeView = React.createClass({
                       {this.state.votes[option.id]}
                     </Text>
                     <Button style={styles.roundButton} onPress={this._votePlusFor.bind(this, option)}>
-                      <Text style={styles.roundButtonText}>
                         +
-                      </Text>
                     </Button>
                   </View>
                 </View>
@@ -179,6 +177,9 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     marginLeft: 20,
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white',
   },
   roundButtonText: {
     fontSize: 25,
