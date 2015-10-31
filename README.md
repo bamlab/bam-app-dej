@@ -15,21 +15,21 @@ nvm install v4
 ```
 brew install watchman
 ```
-* If you want to use flow install flow
-```
-brew install flow
-```
-We recommend periodically running brew update && brew upgrade to keep your programs up-to-date.
+
 * Install react-native
 ```
 npm install -g react-native-cli
 ```
+
+
 
 ## Development
 
 ### iOS
 ```
 cd BamAppDej
+npm install
+
 open ios/BamAppDej.xcodeproj/
 react-native start
 ```
@@ -39,5 +39,7 @@ Then hit *Run* button in XCode.
    * Have an Android emulator running, or a device connected
 ```
 cd BamAppDej
+npm install
+
 react-native run-android
 ```
