@@ -86,7 +86,7 @@ var WelcomeView = React.createClass({
                     <Text style={{fontSize: 16, color: '#888888', width: 30}}>
                       {this.state.votes[option.id]}
                     </Text>
-                    <TouchableHighlight onPress={this._votePlusFor.bind(this, option)}>
+                    <TouchableHighlight onPress={this._votePlusFor.bind(this, option)} underlayColor='white'>
                       <View style={styles.roundButton}>
                         <Text style={styles.roundButtonText}>
                           +
@@ -164,13 +164,13 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
   listItem: {
-    flex: 0.6,
+    flex: 0.65,
     padding: 10,
     fontSize: 16,
     color: '#888888',
   },
   listItemActions: {
-    flex: 0.4,
+    flex: 0.35,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -191,6 +191,7 @@ var styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     color: 'white',
+    lineHeight: 28,
   },
 });
 
